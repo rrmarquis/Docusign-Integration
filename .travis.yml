@@ -1,6 +1,9 @@
 os: linux
-language: java
-jdk: openjdk15
-script:
-  - gradle build
+jobs:
+  include:
+    - language: node_js
+    - language: java
+      jdk: openjdk15
+      script:
+         - gradle build
 
