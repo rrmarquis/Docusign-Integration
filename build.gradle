@@ -85,10 +85,11 @@ clean {
     delete 'src/main/webapp/node_modules'
 }
 
-npmBuild.dependsOn npmInstall
-npmBuild.dependsOn npmTest
-deployClient.dependsOn npmBuild
-compileJava.dependsOn deployClient
+bootRun.dependsOn npmInstall
+bootRun.dependsOn npmTest
+bootRun.dependsOn npmBuild
+bootRun.dependsOn compileJava
+bootRun.dependsOn compileTestJava
 bootRun.dependsOn deployClient
 bootRun.dependsOn test
 bootRun.dependsOn compileJava
