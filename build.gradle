@@ -52,19 +52,27 @@ test {
 task npmBuild(type: NpmTask) {
     description = "Builds app for production"
     workingDir = file("${project.projectDir}/src/main/webapp")
+    environment = ['CI': 'true']
     args = ["run","build"]
 }
 
 task npmTest(type: NpmTask) {
-    description = "Runs javascript tests with npm" 
+    description = "Runs javascript tests with npm"
     workingDir = file("${project.projectDir}/src/main/webapp")
-    environment = ['CI': 'true']
     args = ["run", "test"]
 }
 
 task deployClient(type: Copy) {
    from "${project.projectDir}/src/main/webapp/build"
    into "${project.projectDir}/src/main/resources"
+}
+
+task buildClient() {
+    environment = ['CI': 'true']
+    dependsOn npmInstall
+    dependsOn npmBuild
+    dependsOn npmTest
+    dependsOn deployClient
 }
 
 clean {

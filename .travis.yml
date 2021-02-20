@@ -3,8 +3,10 @@ jobs:
   include:
     - language: node_js
       node_js: node
+      script:
+        - gradle 
     - language: java
       jdk: openjdk15
       script:
-         - gradle build
+        - gradle build
 
