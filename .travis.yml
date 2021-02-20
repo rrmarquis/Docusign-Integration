@@ -4,9 +4,9 @@ jobs:
     - language: node_js
       node_js: node
       script:
-        - gradle 
+        - ./gradlew buildClient
     - language: java
       jdk: openjdk15
       script:
-        - gradle build
+        - ./gradlew buildServer
 

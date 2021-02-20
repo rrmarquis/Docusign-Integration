@@ -75,6 +75,11 @@ task buildClient() {
     dependsOn deployClient
 }
 
+task buildServer() {
+    dependsOn compileJava
+    dependsOn compileTestJava
+}
+
 clean {
     delete 'src/main/webapp/node_modules'
 }
