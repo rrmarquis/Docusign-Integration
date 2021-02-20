@@ -2,6 +2,7 @@ os: linux
 jobs:
   include:
     - language: node_js
+      node_js: node
     - language: java
       jdk: openjdk15
       script:
