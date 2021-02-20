@@ -70,7 +70,6 @@ task deployClient(type: Copy) {
 }
 
 task buildClient() {
-    dependsOn npmInstall
     dependsOn npmBuild
     dependsOn npmTest
     dependsOn deployClient
@@ -84,6 +83,8 @@ task buildServer() {
 clean {
     delete 'src/main/webapp/node_modules'
 }
+
+buildClient.dependsOn npmInstall
 
 bootRun.dependsOn npmInstall
 bootRun.dependsOn npmTest
